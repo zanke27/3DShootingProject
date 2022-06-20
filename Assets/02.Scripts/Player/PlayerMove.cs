@@ -17,7 +17,19 @@ public class PlayerMove : MonoBehaviour
 
     public float spread;
     private bool isCrouch = false;
-    private bool isRun = false;
+    public bool IsCrouch
+    {
+        get => isCrouch;
+        set => isCrouch = value;
+    }
+    [SerializeField] private bool isRun = false;
+    public bool IsRun
+    {
+        get => isRun;
+        set => isRun = value;
+    }
+
+    [SerializeField] private PlayerGun _playerGun = null;
 
     private void Start()
     {
@@ -26,22 +38,25 @@ public class PlayerMove : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Run()
+    public void RunOn()
     {
-        if (isRun)
-        {
-            isRun = false;
-            speed = walkSpeed;
-        }
-        else if (!isRun)
-        {
-            isRun = true;
-            speed = runSpeed;
-        }
+        if (isCrouch) return;
+        if (_playerGun.IsReloading) return;
+        isRun = true;
+        speed = runSpeed;
+    }
+
+    public void RunOff()
+    {
+        if (isCrouch) return;
+        if (_playerGun.IsReloading) return;
+        isRun = false;
+        speed = walkSpeed;
     }
 
     public void Crouch()
     {
+        if (isRun) return;
         if (isCrouch)
         {
             isCrouch = false;

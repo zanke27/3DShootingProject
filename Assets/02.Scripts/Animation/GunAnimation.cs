@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class GunAnimation : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class GunAnimation : MonoBehaviour
     private readonly int _reloadNoAmmoHashStr = Animator.StringToHash("ReloadNoAmmo");
     #endregion
     private PlayerGun _playerGun = null;
+    private PlayerMove _playerMove = null;
 
     private void Awake()
     {
+        _playerMove = Player.GetComponent<PlayerMove>();
         _playerGun = GetComponentInParent<PlayerGun>();
         _gunAnimator = GetComponentInChildren<Animator>();
     }
@@ -24,7 +27,8 @@ public class GunAnimation : MonoBehaviour
     public void RunAnimation()
     {
         if (_playerGun.IsReloading == true) return;
-        if (_gunAnimator.GetBool("Run") == true)
+        if (_playerMove.IsCrouch == true) return;
+        if (_playerMove.IsRun == false) // 순서때문에 거꾸로함 나중에 수정
         {
             _gunAnimator.SetBool(_runHashStr, false);
         }
@@ -37,6 +41,7 @@ public class GunAnimation : MonoBehaviour
     public void ShootAnimation()
     {
         if (_playerGun.IsReloading == true) return;
+        if (_playerMove.IsRun == true) return;
         if (_gunAnimator.GetBool("Aim") == true)
         {
             _gunAnimator.SetTrigger(_shootHashStr);

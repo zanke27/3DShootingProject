@@ -49,12 +49,12 @@ public class Gun : MonoBehaviour
     private bool _isShooting = false;
     [SerializeField] private bool _delayCoroutine = false;
 
-    PlayerMove playerMove = null;
+    private PlayerMove _playerMove = null;
 
     private void Awake()
     {
         _ammo = _weaponData.ammoCapacity;
-        playerMove = Player.GetComponent<PlayerMove>();
+        _playerMove = Player.GetComponent<PlayerMove>();
     }
 
     private void Update()
@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
 
     private void UseWeapon()
     {
-        if (_isShooting == true && _delayCoroutine == false && _isReloading == false)
+        if (_isShooting == true && _delayCoroutine == false && _isReloading == false && _playerMove.IsRun == false)
         {
             if(Ammo > 0)
             {
