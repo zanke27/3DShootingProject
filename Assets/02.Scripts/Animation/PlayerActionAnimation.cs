@@ -17,6 +17,6 @@ public class PlayerActionAnimation : MonoBehaviour
     public void Crouch()
     {
         if (_playerMove.IsRun) return;
-        _actionAnimator.SetTrigger("Crouch");
+            _actionAnimator.SetBool("Crouch", _playerMove.IsCrouch);
     }
 }

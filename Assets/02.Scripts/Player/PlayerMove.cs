@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
+        camPos.transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 
     public void RunOn()
@@ -93,5 +94,4 @@ public class PlayerMove : MonoBehaviour
 
         camPos.transform.localEulerAngles = new Vector3(-rx, 0, 0);
     }
-
 }

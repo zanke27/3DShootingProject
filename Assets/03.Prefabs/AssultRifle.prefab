@@ -2086,7 +2086,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3188996480051543197}
         m_TargetAssemblyTypeName: GunAnimation, Assembly-CSharp
-        m_MethodName: ShootAnimationStart
+        m_MethodName: ShootAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2536,7 +2536,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7126193129781715291, guid: e74180d23cc4da04fa6f8791220e28ad, type: 3}
+  - {fileID: 2100000, guid: c665a6e09afcf634d89dd1dca96b9523, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

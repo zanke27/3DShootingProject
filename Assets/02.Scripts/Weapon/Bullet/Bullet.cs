@@ -21,13 +21,4 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("µé¾î°¨");
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
