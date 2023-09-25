@@ -17,7 +17,7 @@ public class PlayerCheck : MonoBehaviour
     private bool isHit = false;
     private float hitTimeCheck = 0;
 
-    private int hp = 100;
+    public int hp = 100;
 
     public UnityEvent PlayerDieEvent;
 
